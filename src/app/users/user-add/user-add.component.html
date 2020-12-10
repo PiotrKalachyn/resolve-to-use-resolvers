@@ -1,0 +1,8 @@
+<h2>Add User</h2>
+
+<app-user-form [formGroup]="userForm"></app-user-form>
+
+<section>
+	<button [disabled]="userForm.invalid" (click)="create()">Create</button>
+	<button routerLink="..">Cancel</button>
+</section>

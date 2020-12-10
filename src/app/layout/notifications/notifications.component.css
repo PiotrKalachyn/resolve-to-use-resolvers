@@ -1,0 +1,19 @@
+div.toast-notifications {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 42%;
+  max-width: 20em;
+  padding: 0.4em;
+  height: auto;
+  min-height: 3em;
+  z-index: 222;
+}
+
+div.toast-notification {
+  padding: 1em;
+  background: #000d;
+  color: cyan;
+  border: 1px solid #999;
+  border-radius: 0.4em;
+}

@@ -1,0 +1,5 @@
+<div class="toast-notifications" *ngIf="notifications$ | async as notifications">
+	<div class="toast-notification" *ngFor="let notification of notifications">
+		{{ notification }}
+	</div>
+</div>

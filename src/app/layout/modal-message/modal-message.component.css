@@ -1,0 +1,33 @@
+.screen-cover {
+  position: fixed;
+  background: #ddfc;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999998;
+}
+
+.panel {
+  position: relative;
+  margin: 30vh auto;
+  width: 90vw;
+  max-width: 20em;
+
+  padding: 2em 2em 1em 2em;
+  text-align: center;
+
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0.2em;
+}
+
+.icons {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+}
+
+.error {
+  color: red;
+}

@@ -1,0 +1,20 @@
+<ng-container *ngIf="modalMessages.length > 0">
+	<!-- <ng-template let-firstMessage="modalMessages[0]"> -->
+
+	<div class="screen-cover">
+		<div class="panel">
+			<span *ngIf="modalMessages[0].isError" class="icons error">
+			  <i class="fas fa-exclamation-triangle"></i>
+      </span>
+			<p>
+				{{ modalMessages[0].message}}
+			</p>
+			<div class="buttons">
+				<button (click)="clicked()">{{ modalMessages[0].buttonText}}</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- </ng-template> -->
+
+</ng-container>

@@ -1,0 +1,16 @@
+<fieldset [formGroup]="userForm">
+  <div class="input-block">
+    <label>Name*</label>
+    <input formControlName="name" />
+  </div>
+
+  <div class="input-block">
+    <label>E-mail*</label>
+    <input formControlName="email" />
+  </div>
+
+  <div class="input-block">
+    <label>Year of birth</label>
+    <input type="number" formControlName="birthYear" />
+  </div>
+</fieldset>

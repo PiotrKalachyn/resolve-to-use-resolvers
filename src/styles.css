@@ -1,0 +1,45 @@
+/* Add application styles & imports to this file! */
+body {
+  font-family: sans-serif;
+  margin: 0 auto 5em;
+  width: calc(100% - 2em);
+  max-width: 42em;
+}
+section {
+  margin: 1em 0;
+}
+
+button {
+  margin: 0 1em 0.5em 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  padding: 1em;
+  margin: 1em 0;
+  overflow: hidden;
+  position: relative;
+}
+
+div.input-block {
+  margin-top: 1em;
+}
+div.input-block label {
+  display: block;
+}
+
+fieldset div.input-block:first-of-type {
+  margin-top: 0;
+}
+
+fieldset input {
+  padding: 0.5em;
+  border-radius: 0.3em;
+  border: 1px solid #ccc;
+  width: calc(100% - 1em);
+}

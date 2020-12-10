@@ -1,0 +1,17 @@
+<h2>
+	Edit User #{{ userId }} with a resolver ({{ user.name }})
+</h2>
+
+<div class="message" *ngIf="message">
+	{{ message }}
+</div>
+
+<ng-container [formGroup]="userForm">
+	<app-user-form></app-user-form>
+</ng-container>
+
+<section>
+	<button (click)="update()">Update</button>
+	<button routerLink="../../">Cancel</button>
+	<button routerLink="messages">View messages</button>
+</section>

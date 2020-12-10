@@ -1,0 +1,12 @@
+<h2>
+	Edit User #{{ userId }}
+</h2>
+
+<ng-container *ngIf="userForm" [formGroup]="userForm">
+	<app-user-form></app-user-form>
+</ng-container>
+
+<section>
+	<button (click)="update()">Update</button>
+	<button routerLink="../../">Cancel</button>
+</section>

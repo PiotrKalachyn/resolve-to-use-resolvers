@@ -1,0 +1,12 @@
+<ng-container *ngIf="pendingSubscriptions$ | async as pendingSubscriptions">
+	<div *ngIf="pendingSubscriptions?.length > 0" class="pending-subscriptions">
+		<ng-container *ngFor="let pendingSubscription of pendingSubscriptions">
+			<div class="pending-subscription" *ngIf="pendingSubscription.description">
+				{{ pendingSubscription.description }}
+			</div>
+		</ng-container>
+		<div class="spinner">
+			<i class="fas fa-spin fa-circle-notch"></i>
+		</div>
+	</div>
+</ng-container>

@@ -1,0 +1,49 @@
+<p>
+	<button routerLink="add">Add user</button>
+</p>
+
+<!-- <p>
+	<a routerLink="get-edit/1">Edit user</a>
+</p> -->
+<ng-container *ngIf="users$ | async as users">
+	<ng-container>
+		<h3>Edit users</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>E-mail</th>
+					<th>Year of bith</th>
+					<th>Edit</th>
+				</tr>
+			</thead>
+			<tbody class="errors-demo">
+				<tr>
+					<td colspan="3">Non-existing user</td>
+					<td>
+						<button routerLink="get-edit/-1" title="Start editing and try to get an abscent user">Try to get</button>
+						<button routerLink="resolve-edit/-1" title="Try to resolve an absent user, edit if found">Try to resolve</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">Wrong route (without numeric Id)</td>
+					<td>
+						<button routerLink="get-edit/non-numeric" title="Start editing with a wrong route">Try to get</button>
+						<button routerLink="resolve-edit/non-numeric" title="Try to navigate to a wrong route, edit if succeed">Try to resolve</button>
+					</td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr *ngFor="let user of users">
+					<td>{{ user.name}}</td>
+					<td>{{ user.email}}</td>
+					<td>{{ user.birthYear}}</td>
+					<td>
+						<button [routerLink]="'get-edit/' + user.id" title="Start editing and get data">Edit by getting</button>
+						<button [routerLink]="'resolve-edit/' + user.id" title="Try to resolve user data, edit if found">Resolve and edit</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</ng-container>
+</ng-container>
