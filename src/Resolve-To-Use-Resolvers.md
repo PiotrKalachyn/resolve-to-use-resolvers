@@ -66,7 +66,7 @@ Thirdly, resolved data is inherited by child routes. Consider the following setu
 
 Here, both `UserResolveEditComponent` and `UserMessagesComponent` will have user in their route data, because it has been resolved in the parent route (the components themselves do not need to be nested). Thus, we have another (and lean) way to share data between several components, without a service: the data will be resolved during navigation and destroyed when the application leaves the route.
 
-Fourthly, the user experience can be made much smoother. The flow of data acquisition that we outsource to resolvers can and should be decorated with all the necessary UI elements like spinning wait indicators and eventual modal error alerts. Yet while we provide that clear visual feedback to the end user, the main picture does not flicker: the application will actually start navigation once (and only when) all the required data has been resolved.
+Fourthly, the user experience can be made much smoother. The flow of data acquisition that we outsource to resolvers can and should be decorated with all the necessary UI elements like spinning wait indicators and eventual modal error alerts. Yet while we provide that clear visual feedback to the end user, the main picture does not flicker: the application will actually start navigation once (and only when) all the required data have been resolved.
 
 To demonstrate the above I have created this [mocked-up application](https://stackblitz.com/edit/ng-timely-data-pk-indexed-db) that creates data entries (users) and allows for editing them in two ways:
 
