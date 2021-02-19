@@ -24,7 +24,7 @@ So, you can view resolvers as a kind of data-fetching, data-driven guardians (pu
 
 What is hot and cool about it?
 
-Firstly, it allows us to build components that have no blooming idea where their data come from. We like our components dumber, don’t we? Just like we outsource data retrieval and persistence operations to a service agnostic of ways information is presented to or entered by the user, we can now take one step further and move the flow of consuming such services into a separate unit – a resolver. As a result, our data-origin-agnostic component can rest assured that by the time it is initialized relevant data has been made available to it.
+Firstly, it allows us to build components that have no blooming idea where their data come from. We like our components dumber, don’t we? Just like we outsource data retrieval and persistence operations to a service agnostic of ways information is presented to or entered by the user, we can now take one step further and move the flow of consuming such services into a separate unit – a resolver. As a result, our data-origin-agnostic component can rest assured that by the time it is initialized relevant data have been made available to it.
 
 Secondly, resolvers are reusable. Once you have one, you can graft it onto another branch of a routing tree:
 
