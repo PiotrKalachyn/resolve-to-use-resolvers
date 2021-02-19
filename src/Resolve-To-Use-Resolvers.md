@@ -88,7 +88,7 @@ Looks familiar, right? It rings Big Ben even in 2020.
 
 The pattern is like this: a component is instantiated, initialized, and begins to gets its data from a service. This is how `UserGetEditComponent` is organized. It creates a form and populates it with the data received. We’ve crafted and sold a lot of software like that. It works fine... until it doesn’t. I’ll get back to it in a short while.
 
-The other way (to contrast, I’ll call it data-first) inverts the timing: get data first, and if/when you have it, display the editing component.
+The other way (to contrast, I’ll call it data-first) inverts the timing: get data first, and if/when you have them, display the editing component.
 
 In `user.resolver.ts`
 
