@@ -122,3 +122,5 @@ A side benefit of the data-first attitude is that you minimize situations when y
 May it be useful and fun.
 
 Please, share your feedback via [piotr.kalachyn@gmail.com](piotr.kalachyn@gmail.com)
+
+To be continued: I am going to elaborate on when resolvers make UI flow rather jerkier than smoother, and their other limitations.
