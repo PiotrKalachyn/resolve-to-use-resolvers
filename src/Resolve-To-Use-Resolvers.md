@@ -44,7 +44,7 @@ Secondly, resolvers are reusable. Once you have one, you can graft it onto anoth
 }
 ```
 
-Thirdly, resolved data is inherited by child routes. Consider the following setup (as in `src/app/users/users-routing.module.ts`):
+Thirdly, resolved data is inherited by child routes (provided you use `paramsInheritanceStrategy: 'always'`). Consider the following setup (as in `src/app/users/users-routing.module.ts`):
 
 ```
 {
