@@ -119,8 +119,17 @@ Indeed, why rush to navigate (shifting the user’s over-exploited attention) fr
 
 A side benefit of the data-first attitude is that you minimize situations when you really need to veil the whole screen with a modal tinted layer and a spinner to prevent the user from clicking controls that are still waiting for data. In the sample application here I only use non-modal spinners that hover in a corner of the screen, leaving the user full freedom to click around.
 
+Now that we have already bought in the idea, let's sober up a little and consider potential drawbacks. 
+
+One limitation of resolvers is that they are assigned to nodes of the routing tree, while some components may not be “routed” but instead included via a parent components template. So resolvers simply cannot be used everywhere in a natural way.
+
+Another shortcoming has to do with timing in a situation when a component or its nested ones perform some async tasks that cannot be delegated to resolvers:
+
+Imagine one of those subcomponents requests something asynchronously before it can be displayed and used. For instance, a user detail form can include an interactive map for assigning a preferred point of service to a user. In this case fetching one data item (the user detail) in a resolver, and another in a components method gives us no benefit but a delay: the framework will have to wait for user data to resolve before it shows the UserComponent, and only then fire a request of the map.
+
+If instead we fire both requests in a component’s lifecycle hook method (e.g. ngOnInit), they start at the same time and get handled whenever each of them is ready, in unpredictable natural order, resulting in quicker processing and smoother UX.
+
+
 May it be useful and fun.
 
 Please, share your feedback via [piotr.kalachyn@gmail.com](piotr.kalachyn@gmail.com)
-
-To be continued: I am going to elaborate on when resolvers make UI flow rather jerkier than smoother, and their other limitations.
