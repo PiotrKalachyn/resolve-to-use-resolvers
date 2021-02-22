@@ -4,6 +4,8 @@ by Piotr Kalachyn
 
 [#Angular](https://angular.io/)
 
+## Introduction
+
 > The article touches on the power of [*resolvers*](https://angular.io/api/router/Resolve) in Angular routing and why we should all use and enjoy them.
 Please refer to the [demo application](https://stackblitz.com/edit/ng-timely-data-pk-indexed-db).
 
@@ -22,7 +24,7 @@ In the example above `UserEditComponent` will be given the object `user` as `act
 
 So, you can view resolvers as a kind of data-fetching, data-driven guardians (pun intended) of your routes. They are executed after all the activation guards of a route (and those of its children’s) have resolved to `true` and all the ancestor routes’ resolvers have successfully brought home their data.
 
-What is hot and cool about it?
+## What is hot and cool about it?
 
 Firstly, it allows us to build components that have no blooming idea where their data come from. We like our components dumber, don’t we? Just like we outsource data retrieval and persistence operations to a service agnostic of ways information is presented to or entered by the user, we can now take one step further and move the flow of consuming such services into a separate unit – a resolver. As a result, our data-origin-agnostic component can rest assured that by the time it is initialized relevant data have been made available to it.
 
@@ -119,6 +121,8 @@ Indeed, why rush to navigate (shifting the user’s over-exploited attention) fr
 
 A side benefit of the data-first attitude is that you minimize situations when you really need to veil the whole screen with a modal tinted layer and a spinner to prevent the user from clicking controls that are still waiting for data. In the sample application here I only use non-modal spinners that hover in a corner of the screen, leaving the user full freedom to click around.
 
+## When do we not want to use resolvers?
+
 Now that we have already bought in the idea, let's sober up a little and consider potential drawbacks. 
 
 One limitation of resolvers is that they are assigned to nodes of the routing tree, while some components may not be “routed” but instead included via a parent components template. So resolvers simply cannot be used everywhere in a natural way.
@@ -128,7 +132,6 @@ Another shortcoming has to do with timing in a situation when a component or its
 Imagine one of those subcomponents requests something asynchronously before it can be displayed and used. For instance, a user detail form can include an interactive map for assigning a preferred point of service to a user. In this case fetching one data item (the user detail) in a resolver, and another in a components method gives us no benefit but a delay: the framework will have to wait for user data to resolve before it shows the UserComponent, and only then fire a request of the map.
 
 If instead we fire both requests in a component’s lifecycle hook method (e.g. ngOnInit), they start at the same time and get handled whenever each of them is ready, in unpredictable natural order, resulting in quicker processing and smoother UX.
-
 
 May it be useful and fun.
 
