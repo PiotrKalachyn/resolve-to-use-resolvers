@@ -22,11 +22,9 @@ Generally, resolvers are for preparing data in the Router (namely, in the data o
 
 In the example above `UserEditComponent` will be given the object `user` as `activatedRoute.snapshot.data.user`.
 
-So, you can view resolvers as a kind of data-fetching, data-driven guardians (pun intended) of your routes. They are executed after all the activation guards of a route (and those of its children’s) have resolved to `true` and all the ancestor routes’ resolvers have successfully brought home their data.
-
 ## What is hot and cool about it?
 
-Firstly, it allows us to build components that have no blooming idea where their data come from. We like our components dumber, don’t we? Just like we outsource data retrieval and persistence operations to a service agnostic of ways information is presented to or entered by the user, we can now take one step further and move the flow of consuming such services into a separate unit – a resolver. As a result, our data-origin-agnostic component can rest assured that by the time it is initialized relevant data have been made available to it.
+Firstly, it allows us to build components that have no blooming idea where their data come from. We like our components dumber, don’t we? Just like we outsource data retrieval and persistence operations to a service agnostic of ways information is presented to or entered by the user, we can now take one step further and move the flow of consuming such services into a separate unit – a resolver. As a result, our data-origin-agnostic component can rest assured that by the time it is initialized all the relevant data has been made available to it.
 
 Secondly, resolvers are reusable. Once you have one, you can graft it onto another branch of a routing tree:
 
@@ -68,7 +66,7 @@ Thirdly, resolved data is inherited by child routes (provided you use `paramsInh
 
 Here, both `UserResolveEditComponent` and `UserMessagesComponent` will have user in their route data, because it has been resolved in the parent route (the components themselves do not need to be nested). Thus, we have another (and lean) way to share data between several components, without a service: the data will be resolved during navigation and destroyed when the application leaves the route.
 
-Fourthly, the user experience can be made much smoother. The flow of data acquisition that we outsource to resolvers can and should be decorated with all the necessary UI elements like spinning wait indicators and eventual modal error alerts. Yet while we provide that clear visual feedback to the end user, the main picture does not flicker: the application will actually start navigation once (and only when) all the required data have been resolved.
+Fourthly, the user experience can be made much smoother. The flow of data acquisition that we outsource to resolvers can and should be decorated with all the necessary UI elements like spinning wait indicators and eventual modal error alerts. Yet while we provide that clear visual feedback to the end user, the main picture does not flicker: the application will actually start navigation once (and only when) all the required data has been resolved.
 
 To demonstrate the above I have created this [mocked-up application](https://stackblitz.com/edit/ng-timely-data-pk-indexed-db) that creates data entries (users) and allows for editing them in two ways:
 
@@ -132,6 +130,12 @@ Another shortcoming has to do with timing in a situation when a component or its
 Imagine one of those subcomponents requests something asynchronously before it can be displayed and used. For instance, a user detail form can include an interactive map for assigning a preferred point of service to a user. In this case fetching one data item (the user detail) in a resolver, and another in a components method gives us no benefit but a delay: the framework will have to wait for user data to resolve before it shows the UserComponent, and only then fire a request of the map.
 
 If instead we fire both requests in a component’s lifecycle hook method (e.g. ngOnInit), they start at the same time and get handled whenever each of them is ready, in unpredictable natural order, resulting in quicker processing and smoother UX.
+
+##Matter or choice
+
+Some argue that what I call view-first here is merely user-first: some activity happening immediately is experienced by the user as a smoother process compared to just spinning waiting elements. That would be true in a restaurant situation: while you are anticipating your dinner, the waiter has already put cutlery on the table. You both know it’s coming. However, in a post office it would feel differently: imagine you drop by to check if there is any mail for you, you are given a book to sign the receipt, and then the clerk goes to look for your letters and comes back only to tell you there is none today and nothing to sign.
+
+So, for the sake of the user, whether we go view-first or data-first depends on the average waiting time and probability of default.
 
 May it be useful and fun.
 
