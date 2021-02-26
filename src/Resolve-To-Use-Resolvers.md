@@ -131,7 +131,7 @@ Imagine one of those subcomponents requests something asynchronously before it c
 
 If instead we fire both requests in a component’s lifecycle hook method (e.g. ngOnInit), they start at the same time and get handled whenever each of them is ready, in unpredictable natural order, resulting in quicker processing and smoother UX.
 
-##Matter or choice
+## Matter or choice
 
 Some argue that what I call view-first here is merely user-first: some activity happening immediately is experienced by the user as a smoother process compared to just spinning waiting elements. That would be true in a restaurant situation: while you are anticipating your dinner, the waiter has already put cutlery on the table. You both know it’s coming. However, in a post office it would feel differently: imagine you drop by to check if there is any mail for you, you are given a book to sign the receipt, and then the clerk goes to look for your letters and comes back only to tell you there is none today and nothing to sign.
 
